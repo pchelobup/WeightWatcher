@@ -1,5 +1,7 @@
 package ru.alina.configs;
 
+import org.apache.commons.dbcp.BasicDataSource;
+import org.postgresql.ds.common.BaseDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -16,7 +18,8 @@ import javax.sql.DataSource;
 public class DataJpaConfig {
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+       // DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/weight");
         dataSource.setUsername( "postgres" );
