@@ -1,11 +1,10 @@
 package ru.alina.configs;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.postgresql.ds.common.BaseDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
@@ -15,10 +14,11 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "ru.alina.repository")
-public class DataJpaConfig {
+@Profile("default")
+public class DataJpaPostgresConfig {
+
     @Bean
-    public DataSource dataSource() {
-       // DriverManagerDataSource dataSource = new DriverManagerDataSource();
+    public DataSource dataSourcePostgres() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/weight");
@@ -27,13 +27,17 @@ public class DataJpaConfig {
         return dataSource;
     }
 
+
+
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter() {
+    public JpaVendorAdapter jpaVendorAdapterPostgres() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(Database.POSTGRESQL);
         adapter.setGenerateDdl(true);
         return adapter;
     }
+
+
 
     @Bean("entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean localContainerEMF(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
