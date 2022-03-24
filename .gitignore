@@ -4,3 +4,7 @@
 *.iml
 /log
 /*.iml
+/weight.lck
+/weight.log
+/weight.properties
+/weight.script

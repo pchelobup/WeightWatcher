@@ -1,9 +1,14 @@
 package ru.alina.configs;
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -15,15 +20,19 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = "ru.alina.repository")
 @Profile("default")
+@PropertySource("classpath:db.properties")
 public class DataJpaPostgresConfig {
+    @Autowired
+    private Environment env;
+
 
     @Bean
     public DataSource dataSourcePostgres() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/weight");
-        dataSource.setUsername( "postgres" );
-        dataSource.setPassword( "1234" );
+        dataSource.setDriverClassName(env.getProperty("db.driver"));
+        dataSource.setUrl(env.getProperty("db.url"));
+        dataSource.setUsername( env.getProperty("db.username") );
+        dataSource.setPassword(env.getProperty("db.password"));
         return dataSource;
     }
 
