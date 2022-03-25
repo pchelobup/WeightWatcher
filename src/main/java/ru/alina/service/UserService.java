@@ -9,6 +9,7 @@ import ru.alina.repository.UserRepository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -40,5 +41,10 @@ public class UserService {
     public List<User> getAll(){
         log.info("getAll user");
         return userRepository.getAll();
+    }
+
+    public Optional<User> getByEmail(String email){
+        log.info("get user by email {}",email);
+        return userRepository.getByEmail(email);
     }
 }

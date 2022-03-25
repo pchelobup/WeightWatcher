@@ -5,6 +5,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.EnumSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -14,31 +16,48 @@ public class User extends BaseEntity {
     @NotBlank
     @Size(max = 100)
     private String email;
+
     @Column(nullable = false)
     @NotBlank
     @Size(min = 5, max = 100)
     private String password;
+
     private Date registered;
+
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role"}, name = "uk_user_roles")})
+    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<Role> roles;
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
     private int height;
+
     private Integer age;
+
     @Enumerated(EnumType.STRING)
     private Activity activity;
+
     @Column(name = "start_weight")
     private double startWeight;
+
     @Column(name = "desired_weight")
     private double desiredWeight;
+
     private int calories;
 
     public User() {
     }
 
 
-    public User(Integer id, String email, String password, Gender gender, int height, Integer age, Activity activity, double startWeight, double desiredWeight, int calories) {
+    public User(Integer id, String email, String password, Gender gender, int height, Integer age, Activity activity, double startWeight, double desiredWeight, int calories, Role role, Role...roles) {
         super(id);
         this.email = email;
         this.password = password;
+        this.roles = EnumSet.of(role, roles);
         this.gender = gender;
         this.height = height;
         this.age = age;
@@ -48,9 +67,10 @@ public class User extends BaseEntity {
         this.calories = calories;
     }
 
-    public User(String email, String password, Gender gender, int height, Integer age, Activity activity, double startWeight, double desiredWeight, int calories) {
+    public User(String email, String password, Gender gender, int height, Integer age, Activity activity, double startWeight, double desiredWeight, int calories, Role role, Role...roles) {
         this.email = email;
         this.password = password;
+        this.roles = EnumSet.of(role, roles);
         this.gender = gender;
         this.height = height;
         this.age = age;
@@ -82,6 +102,14 @@ public class User extends BaseEntity {
 
     public void setRegistered(Date registered) {
         this.registered = registered;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public Gender getGender() {

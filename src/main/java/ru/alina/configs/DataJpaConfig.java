@@ -22,9 +22,12 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "ru.alina.repository")
 @PropertySource("classpath:db.properties")
 public class DataJpaConfig {
-    @Autowired
     private Environment env;
 
+    @Autowired
+    public void setEnv(Environment env) {
+        this.env = env;
+    }
 
     @Bean
     @Profile("default")

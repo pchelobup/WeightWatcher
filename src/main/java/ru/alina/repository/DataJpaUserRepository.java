@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import ru.alina.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class DataJpaUserRepository implements UserRepository {
@@ -31,5 +32,10 @@ public class DataJpaUserRepository implements UserRepository {
     @Override
     public List<User> getAll() {
         return dataJpaUser.findAll();
+    }
+
+    @Override
+    public Optional<User> getByEmail(String email) {
+        return dataJpaUser.findByEmail(email);
     }
 }
