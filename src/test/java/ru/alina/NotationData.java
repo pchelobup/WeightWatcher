@@ -6,11 +6,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class NotationData {
-    public static final Notation NOTATION1 = new Notation(3, UserData.USER1, LocalDate.of(2020, 01, 30), 100.1);
-    public static final Notation NOTATION2 = new Notation(4, UserData.USER1, LocalDate.of(2020, 01, 31), 99.4);
-    public static final Notation NOTATION3 = new Notation(5, UserData.USER2, LocalDate.of(2022, 01, 31), 54.9);
-    public static final Notation NOTATION4 = new Notation(6, UserData.USER2, LocalDate.of(2022, 02, 01), 54.6);
-    public static final Notation NOTATION5 = new Notation(7, UserData.USER2, LocalDate.of(2022, 02, 02), 54.7);
+    public static final Notation NOTATION1 = new Notation(3, UserData.USER1, LocalDate.of(2020, 1, 30), 100.1);
+    public static final Notation NOTATION2 = new Notation(4, UserData.USER1, LocalDate.of(2020, 1, 31), 99.4);
+    public static final Notation NOTATION3 = new Notation(5, UserData.USER2, LocalDate.of(2022, 1, 31), 54.9);
+    public static final Notation NOTATION4 = new Notation(6, UserData.USER2, LocalDate.of(2022, 2, 1), 54.6);
+    public static final Notation NOTATION5 = new Notation(7, UserData.USER2, LocalDate.of(2022, 2, 2), 54.7);
 
     public static final Integer NOT_FOUND_ID = 555;
 
@@ -20,7 +20,7 @@ public class NotationData {
     public static final List<Notation> NOTATIONS = List.of(NOTATION1, NOTATION2);
 
     public static Notation getNew() {
-        return new Notation(UserData.USER1, LocalDate.of(2022, 03, 23), 50.55);
+        return new Notation(UserData.USER1, LocalDate.of(2022, 3, 23), 50.55);
     }
 
     public static Notation getUpdated() {

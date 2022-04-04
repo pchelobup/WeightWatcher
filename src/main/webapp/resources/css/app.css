@@ -1,0 +1,11 @@
+.navbar {
+    margin-bottom: 20px;
+}
+.btn-no-style {
+    border: none;
+    background-color: transparent;
+}
+
+.exit {
+    margin-bottom: 0;
+}

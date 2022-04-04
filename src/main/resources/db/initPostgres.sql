@@ -11,13 +11,13 @@ CREATE TABLE users
     id             INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
     email          VARCHAR(30)      NOT NULL UNIQUE,
     password       VARCHAR     NOT NULL,
-    registered     TIMESTAMP           DEFAULT now(),
+    registered     TIMESTAMP           DEFAULT now() NOT NULL,
     gender         VARCHAR(6),
-    height         INTEGER          NOT NULL,
-    age            INTEGER          NOT NULL,
-    activity       VARCHAR(6)       NOT NULL,
-    start_weight   DOUBLE PRECISION NOT NULL,
-    desired_weight DOUBLE PRECISION NOT NULL,
+    height         INTEGER,
+    age            INTEGER,
+    activity       VARCHAR(6),
+    start_weight   DOUBLE PRECISION,
+    desired_weight DOUBLE PRECISION,
     calories       INTEGER
 
 

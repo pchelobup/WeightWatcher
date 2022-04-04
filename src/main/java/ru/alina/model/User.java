@@ -1,5 +1,7 @@
 package ru.alina.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -22,6 +24,8 @@ public class User extends BaseEntity {
     @Size(min = 5, max = 100)
     private String password;
 
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date registered;
 
     @Enumerated(EnumType.STRING)
@@ -34,7 +38,7 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    private int height;
+    private Integer height;
 
     private Integer age;
 
@@ -42,18 +46,22 @@ public class User extends BaseEntity {
     private Activity activity;
 
     @Column(name = "start_weight")
-    private double startWeight;
+    private Double startWeight;
 
     @Column(name = "desired_weight")
-    private double desiredWeight;
+    private Double desiredWeight;
 
-    private int calories;
+    private Integer calories;
 
     public User() {
     }
 
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
-    public User(Integer id, String email, String password, Gender gender, int height, Integer age, Activity activity, double startWeight, double desiredWeight, int calories, Role role, Role...roles) {
+    public User(Integer id, String email, String password, Gender gender, Integer height, Integer age, Activity activity, Double startWeight, Double desiredWeight, Integer calories, Role role, Role...roles) {
         super(id);
         this.email = email;
         this.password = password;
@@ -67,7 +75,7 @@ public class User extends BaseEntity {
         this.calories = calories;
     }
 
-    public User(String email, String password, Gender gender, int height, Integer age, Activity activity, double startWeight, double desiredWeight, int calories, Role role, Role...roles) {
+    public User(String email, String password, Gender gender, Integer height, Integer age, Activity activity, Double startWeight, Double desiredWeight, Integer calories, Role role, Role...roles) {
         this.email = email;
         this.password = password;
         this.roles = EnumSet.of(role, roles);
@@ -120,11 +128,11 @@ public class User extends BaseEntity {
         this.gender = gender;
     }
 
-    public int getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 
@@ -144,27 +152,27 @@ public class User extends BaseEntity {
         this.activity = activity;
     }
 
-    public double getStartWeight() {
+    public Double getStartWeight() {
         return startWeight;
     }
 
-    public void setStartWeight(double startWeight) {
+    public void setStartWeight(Double startWeight) {
         this.startWeight = startWeight;
     }
 
-    public double getDesiredWeight() {
+    public Double getDesiredWeight() {
         return desiredWeight;
     }
 
-    public void setDesiredWeight(double desiredWeight) {
+    public void setDesiredWeight(Double desiredWeight) {
         this.desiredWeight = desiredWeight;
     }
 
-    public int getCalories() {
+    public Integer getCalories() {
         return calories;
     }
 
-    public void setCalories(int calories) {
+    public void setCalories(Integer calories) {
         this.calories = calories;
     }
 

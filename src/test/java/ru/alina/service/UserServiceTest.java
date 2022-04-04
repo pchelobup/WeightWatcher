@@ -35,7 +35,7 @@ class UserServiceTest extends ServiceTest {
 
     @Test
     void update() {
-        User updated = getUpdated();
+        User updated = getUpdated(service.get(USER1.getId()));
         service.save(updated);
         match(service.get(USER1.getId()), updated);
     }
@@ -63,6 +63,11 @@ class UserServiceTest extends ServiceTest {
     @Test
     void getAll() {
         match(service.getAll(),  USERS);
+    }
+
+    @Test
+    void getByEmail() {
+        match(service.getByEmail(USER1.getEmail()).get(), USER1);
     }
 
 }

@@ -45,6 +45,10 @@ public class UserService {
 
     public Optional<User> getByEmail(String email){
         log.info("get user by email {}",email);
-        return userRepository.getByEmail(email);
+        return  userRepository.getByEmail(email);
+    }
+
+    public boolean isLoginExist(String email) {
+        return userRepository.getByEmail(email).isPresent();
     }
 }
