@@ -61,7 +61,7 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    public User(Integer id, String email, String password, Gender gender, Integer height, Integer age, Activity activity, Double startWeight, Double desiredWeight, Integer calories, Role role, Role...roles) {
+    public User(Long id, String email, String password, Gender gender, Integer height, Integer age, Activity activity, Double startWeight, Double desiredWeight, Integer calories, Role role, Role...roles) {
         super(id);
         this.email = email;
         this.password = password;

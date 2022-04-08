@@ -14,7 +14,7 @@ class NotationServiceTest extends ServiceTest {
     @Test
     void create() {
         Notation created = service.save(getNew(), USER1_ID);
-        int newId = created.getId();
+        Long newId = created.getId();
         Notation notation = getNew();
         notation.setId(newId);
         match(created, notation);

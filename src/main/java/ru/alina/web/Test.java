@@ -12,7 +12,7 @@ public class Test {
 
     @GetMapping("/")
     public String test() {
-        System.out.println(userService.get(1));
+        System.out.println(userService.get(1L));
         return "welcome";
     }
 }

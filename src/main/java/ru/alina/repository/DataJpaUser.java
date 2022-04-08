@@ -10,11 +10,11 @@ import ru.alina.model.User;
 
 import java.util.Optional;
 
-public interface DataJpaUser extends JpaRepository<User, Integer> {
+public interface DataJpaUser extends JpaRepository<User, Long> {
     @Transactional
     @Modifying
     @Query("DELETE FROM User u WHERE u.id=:id")
-    void delete(@Param("id") int id);
+    void delete(@Param("id") Long id);
 
     Optional<User> findByEmail(String email);
 }

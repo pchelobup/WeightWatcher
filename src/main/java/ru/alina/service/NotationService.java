@@ -20,23 +20,23 @@ public class NotationService {
     }
 
     @Transactional
-    public Notation save(Notation notation, int userId){
+    public Notation save(Notation notation, Long userId){
         log.info("save {} for user {}", notation, userId);
         return weightRepository.save(notation, userId);
     }
 
     @Transactional
-    public void delete(int id, int userId){
+    public void delete(Long id, Long userId){
         log.info("delete notation {} for user {}", id, userId);
         weightRepository.delete(id, userId);
     }
 
-    public Notation get(int id, int userId) {
+    public Notation get(Long id, Long userId) {
         log.info("get notation {} for user {}", id, userId);
         return weightRepository.get(id, userId);
     }
 
-    public List<Notation> getAll(int userId) {
+    public List<Notation> getAll(Long userId) {
         log.info("getAll notation for user {}", userId);
         return weightRepository.getAll(userId);
     }

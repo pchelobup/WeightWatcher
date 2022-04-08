@@ -9,13 +9,13 @@ import ru.alina.model.Notation;
 
 import java.util.List;
 
-public interface DataJpaNotation extends JpaRepository<Notation, Integer> {
+public interface DataJpaNotation extends JpaRepository<Notation, Long> {
 
     @Transactional
     @Modifying
     @Query("DELETE FROM Notation n WHERE n.id=:id AND n.user.id=:userId")
-    void delete(@Param("id") int id, @Param("userId") int userId);
+    void delete(@Param("id") Long id, @Param("userId") Long userId);
 
     @Query("SELECT n FROM Notation n WHERE n.user.id=:userId")
-    List<Notation> getAll(@Param("userId") int userId);
+    List<Notation> getAll(@Param("userId") Long userId);
 }

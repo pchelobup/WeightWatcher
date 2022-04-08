@@ -20,12 +20,12 @@ public class DataJpaUserRepository implements UserRepository {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         dataJpaUser.delete(id);
     }
 
     @Override
-    public User get(int id) {
+    public User get(Long id) {
         return dataJpaUser.findById(id).orElse(null);
     }
 

@@ -14,7 +14,7 @@ class UserServiceTest extends ServiceTest {
     @Test
     void create() {
         User created = service.save(getNew());
-        int newId = created.getId();
+        long newId = created.getId();
         User user = getNew();
         user.setId(newId);
         match(created, user);
@@ -49,7 +49,7 @@ class UserServiceTest extends ServiceTest {
 
     @Test
     void get() {
-        User actual = service.get(1);
+        User actual = service.get(1L);
         match(actual, USER1);
 
     }
@@ -67,7 +67,7 @@ class UserServiceTest extends ServiceTest {
 
     @Test
     void getByEmail() {
-        match(service.getByEmail(USER1.getEmail()).get(), USER1);
+        match(service.getByEmail(USER1.getEmail()).orElseThrow(), USER1);
     }
 
 }

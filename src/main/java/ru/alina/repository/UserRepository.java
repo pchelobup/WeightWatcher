@@ -8,10 +8,10 @@ import java.util.Optional;
 public interface UserRepository {
     User save(User user);
 
-    void delete(int id);
+    void delete(Long id);
 
     // null if not found
-    User get(int id);
+    User get(Long id);
 
     List<User> getAll();
 

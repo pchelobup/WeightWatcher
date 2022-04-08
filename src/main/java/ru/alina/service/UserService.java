@@ -28,12 +28,12 @@ public class UserService {
     }
 
     @Transactional
-    public void delete(int id){
+    public void delete(Long id){
         log.info("delete user {}", id);
         userRepository.delete(id);
     }
 
-    public User get(int id) {
+    public User get(Long id) {
         log.info("get user {}", id);
         return userRepository.get(id);
     }

@@ -38,7 +38,7 @@ public class Notation extends BaseEntity {
     public Notation() {
     }
 
-    public Notation(Integer id, User user, LocalDate added, Double weight) {
+    public Notation(Long id, User user, LocalDate added, Double weight) {
         super(id);
         this.user = user;
         this.added = added;

@@ -10,20 +10,20 @@ public abstract class BaseEntity {
     @Id
     @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
-    protected Integer id;
+    protected Long id;
 
     public BaseEntity() {
     }
 
-    public BaseEntity(Integer id) {
+    public BaseEntity(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -31,7 +31,7 @@ public abstract class BaseEntity {
         return this.id == null;
     }
 
-    public int id() {
+    public Long id() {
         Assert.notNull(id, "Entity must have id");
         return id;
     }

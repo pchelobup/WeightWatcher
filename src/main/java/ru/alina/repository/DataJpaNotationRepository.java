@@ -16,7 +16,7 @@ public class DataJpaNotationRepository implements NotationRepository {
     }
 
     @Override
-    public Notation save(Notation notation, int userId) {
+    public Notation save(Notation notation, Long userId) {
         if (!notation.isNew() && get(notation.id(), userId) == null) {
             return null;
         }
@@ -25,19 +25,19 @@ public class DataJpaNotationRepository implements NotationRepository {
     }
 
     @Override
-    public  void delete(int id, int userId) {
+    public  void delete(Long id, Long userId) {
         dataJpaNotation.delete(id, userId);
     }
 
     @Override
-    public Notation get(int id, int userId) {
+    public Notation get(Long id, Long userId) {
         return dataJpaNotation.findById(id)
-                .filter(meal -> meal.getUser().getId() == userId)
+                .filter(meal -> meal.getUser().getId().equals(userId))
                 .orElse(null);
     }
 
     @Override
-    public List<Notation> getAll(int userId) {
+    public List<Notation> getAll(Long userId) {
         return dataJpaNotation.getAll(userId);
     }
 }
