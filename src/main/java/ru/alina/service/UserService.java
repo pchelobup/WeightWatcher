@@ -28,7 +28,7 @@ public class UserService {
     }
 
     @Transactional
-    public void delete(Long id){
+    public void delete(Long id) {
         log.info("delete user {}", id);
         userRepository.delete(id);
     }
@@ -38,14 +38,19 @@ public class UserService {
         return userRepository.get(id);
     }
 
-    public List<User> getAll(){
+    public List<User> getAll() {
         log.info("getAll user");
         return userRepository.getAll();
     }
 
-    public Optional<User> getByEmail(String email){
-        log.info("get user by email {}",email);
-        return  userRepository.getByEmail(email);
+    public Optional<User> getByEmail(String email) {
+        log.info("get user by email {}", email);
+        return userRepository.getByEmail(email);
+    }
+
+    public Long getIdByEmail(String email) {
+        log.info("get user id by email {}", email);
+        return getByEmail(email).orElseThrow().getId();
     }
 
     public boolean isLoginExist(String email) {

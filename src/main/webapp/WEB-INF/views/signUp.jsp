@@ -6,7 +6,7 @@
 <body>
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">WeightWatcher</a>
         <div>
             <a class="nav-link active" href="">Sing In</a>
         </div>

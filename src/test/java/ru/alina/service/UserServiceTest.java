@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import ru.alina.model.User;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.alina.UserData.*;
 
@@ -68,6 +70,11 @@ class UserServiceTest extends ServiceTest {
     @Test
     void getByEmail() {
         match(service.getByEmail(USER1.getEmail()).orElseThrow(), USER1);
+    }
+
+    @Test
+    void getIdByEmail() {
+        assertThat(service.getIdByEmail(USER1.getEmail())).isEqualTo(USER1.getId());
     }
 
 }

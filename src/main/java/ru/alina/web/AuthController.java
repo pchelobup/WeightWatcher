@@ -14,7 +14,7 @@ import java.util.Collections;
 
 @Controller
 public class AuthController {
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -46,9 +46,8 @@ public class AuthController {
         String hashPass = bcryptPasswordEncoder.encode(password);
         User user = new User(email, hashPass);
         user.setRoles(Collections.singleton(Role.USER));
-        //TODO алгоритм деействий если юзер null
-        User user1 = userService.save(user);
-        System.out.println(user1);
+        //TODO оповестить и записать в лог если юзер null
+        userService.save(user);
         return "singIn";
     }
 }

@@ -38,9 +38,20 @@ public class Notation extends BaseEntity {
     public Notation() {
     }
 
+    public Notation(LocalDate added, Double weight) {
+        this.added = added;
+        this.weight = weight;
+    }
+
     public Notation(Long id, User user, LocalDate added, Double weight) {
         super(id);
         this.user = user;
+        this.added = added;
+        this.weight = weight;
+    }
+
+    public Notation(Long id, LocalDate added, Double weight) {
+        super(id);
         this.added = added;
         this.weight = weight;
     }
@@ -53,7 +64,7 @@ public class Notation extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Weight{" +
+        return "Notation{" +
                 "id='" + getId() + '\'' +
                 "added=" + added +
                 ", weight=" + weight +
