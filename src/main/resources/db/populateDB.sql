@@ -3,7 +3,7 @@ FROM notation;
 DELETE
 FROM user_roles;
 DELETE
-FROM parameters;
+FROM profile;
 DELETE
 FROM users;
 
@@ -13,7 +13,7 @@ VALUES (1, 'mail@Mail.com', '$2a$12$FzYWgZ.ukSJS9KAtZZvHkOVw5iOGKibZlenQ1AxytGbn
        (2, 'pochta@Mail.com', '$2a$12$h5yDKri/.IjvfHrziaQ.QejnQmhSKmEXg4zHq6CVGM5IWkr.GiqPG', '2022-01-30 10:00:00',
         'ACTIVE');
 
-INSERT INTO parameters(id, user_id, gender, height, age, activity, start_weight, desired_weight, calories)
+INSERT INTO profile(id, user_id, gender, height, age, activity, start_weight, desired_weight, calories)
 VALUES (1, 1, 'MALE', 180, 55, 'MIN', 100, 90, 2000),
        (2, 2, 'FEMALE', 150, 16, 'MIN', 55, 40, 1000);
 

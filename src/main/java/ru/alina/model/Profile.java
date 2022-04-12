@@ -3,8 +3,8 @@ package ru.alina.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "parameters")
-public class Parameters {
+@Table(name = "profile")
+public class Profile {
     @Id
     public Long id;
 
@@ -30,10 +30,10 @@ public class Parameters {
 
     private Integer calories;
 
-    public Parameters() {
+    public Profile() {
     }
 
-    public Parameters(Long id, Gender gender, Integer height, Integer age, Activity activity, Double startWeight, Double desiredWeight, Integer calories) {
+    public Profile(Long id, Gender gender, Integer height, Integer age, Activity activity, Double startWeight, Double desiredWeight, Integer calories) {
         this.id = id;
         this.gender = gender;
         this.height = height;
@@ -44,7 +44,7 @@ public class Parameters {
         this.calories = calories;
     }
 
-    public Parameters(Gender gender, Integer height, Integer age, Activity activity, Double startWeight, Double desiredWeight, Integer calories) {
+    public Profile(Gender gender, Integer height, Integer age, Activity activity, Double startWeight, Double desiredWeight, Integer calories) {
         this.gender = gender;
         this.height = height;
         this.age = age;
@@ -128,7 +128,7 @@ public class Parameters {
 
     @Override
     public String toString() {
-        return "Parameters{" +
+        return "Profile{" +
                 "id=" + id +
                 ", gender=" + gender +
                 ", height=" + height +

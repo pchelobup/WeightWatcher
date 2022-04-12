@@ -5,21 +5,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.alina.model.Parameters;
+import ru.alina.model.Profile;
 import ru.alina.model.User;
-import ru.alina.repository.ParametersRepository;
+import ru.alina.repository.ProfileRepository;
 import ru.alina.repository.UserRepository;
 
 import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class ParametersService {
+public class ProfileService {
     private final Logger log = LoggerFactory.getLogger(UserService.class);
-    private final ParametersRepository repository;
+    private final ProfileRepository repository;
     private final UserRepository userRepository;
 
-    public ParametersService(ParametersRepository repository, UserRepository userRepository) {
+    public ProfileService(ProfileRepository repository, UserRepository userRepository) {
         this.repository = repository;
         this.userRepository = userRepository;
     }
@@ -27,31 +27,31 @@ public class ParametersService {
 
     @Transactional
     @Modifying
-    public Parameters save(Parameters parameters, Long userId) {
-        if (parameters.getId() == null && parameters.getUser() == null) {
-            parameters.setId(userId);
+    public Profile save(Profile profile, Long userId) {
+        if (profile.getId() == null && profile.getUser() == null) {
+            profile.setId(userId);
             User user = userRepository.get(userId);
-            parameters.setUser(user);
+            profile.setUser(user);
         }
 
-        log.info("save parameters {} with userId {}", parameters, userId);
-        return repository.save(parameters, userId);
+        log.info("save profile {} with userId {}", profile, userId);
+        return repository.save(profile, userId);
     }
 
     @Transactional
     public void delete(Long id) {
-        log.info("delete parameters {}", id);
+        log.info("delete profile {}", id);
         repository.delete(id);
     }
 
 
-    public Parameters get(Long id) {
-        log.info("get parameters {}", id);
+    public Profile get(Long id) {
+        log.info("get profile {}", id);
         return repository.get(id);
     }
 
-    public List<Parameters> getAll() {
-        log.info("getAll parameters");
+    public List<Profile> getAll() {
+        log.info("getAll profile");
         return repository.getAll();
     }
 

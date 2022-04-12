@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS notation;
-DROP TABLE IF EXISTS user_parameters;
+DROP TABLE IF EXISTS profile;
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS global_seq;
 
@@ -17,7 +17,7 @@ CREATE TABLE users
 
 );
 
-CREATE TABLE parameters
+CREATE TABLE profile
 (
     id             BIGINT PRIMARY KEY DEFAULT nextval('global_seq'),
     user_id        BIGINT NOT NULL UNIQUE,
