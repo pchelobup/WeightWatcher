@@ -4,7 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.alina.model.User;
-
 import java.util.*;
 
 
@@ -12,10 +11,12 @@ public class SecurityUser implements UserDetails {
     private final String username;
     private final String password;
     private final List<SimpleGrantedAuthority> authorities;
+    private final boolean isActive;
 
-    public SecurityUser(String username, String password, List<SimpleGrantedAuthority> authorities) {
+    public SecurityUser(String username, String password, boolean isActive, List<SimpleGrantedAuthority> authorities) {
         this.username = username;
         this.password = password;
+        this.isActive = isActive;
         this.authorities = authorities;
     }
 
@@ -38,22 +39,22 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return isActive;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return isActive;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return isActive;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isActive;
     }
 
     public static UserDetails fromUser(User user) {
@@ -62,6 +63,10 @@ public class SecurityUser implements UserDetails {
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),
+                user.getStatus().isActive(),
+                user.getStatus().isActive(),
+                user.getStatus().isActive(),
+                user.getStatus().isActive(),
                 authorities
         );
     }

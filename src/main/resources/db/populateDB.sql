@@ -1,10 +1,21 @@
-DELETE FROM notation;
-DELETE FROM user_roles;
-DELETE FROM users;
+DELETE
+FROM notation;
+DELETE
+FROM user_roles;
+DELETE
+FROM parameters;
+DELETE
+FROM users;
 
-INSERT INTO users(id, email, password, registered, gender, height, age, activity, start_weight, desired_weight, calories)
-VALUES (1, 'mail@Mail.com', '$2a$12$FzYWgZ.ukSJS9KAtZZvHkOVw5iOGKibZlenQ1AxytGbnBAmGPaP9y', '2020-01-30 10:00:00', 'MALE', 180, 55, 'MIN', 100, 90, 2000),
-       (2, 'pochta@Mail.com', '$2a$12$h5yDKri/.IjvfHrziaQ.QejnQmhSKmEXg4zHq6CVGM5IWkr.GiqPG', '2022-01-30 10:00:00', 'FEMALE', 150, 16, 'MIN', 55, 40, 1000);
+INSERT INTO users(id, email, password, registered, status)
+VALUES (1, 'mail@Mail.com', '$2a$12$FzYWgZ.ukSJS9KAtZZvHkOVw5iOGKibZlenQ1AxytGbnBAmGPaP9y', '2020-01-30 10:00:00',
+        'ACTIVE'),
+       (2, 'pochta@Mail.com', '$2a$12$h5yDKri/.IjvfHrziaQ.QejnQmhSKmEXg4zHq6CVGM5IWkr.GiqPG', '2022-01-30 10:00:00',
+        'ACTIVE');
+
+INSERT INTO parameters(id, user_id, gender, height, age, activity, start_weight, desired_weight, calories)
+VALUES (1, 1, 'MALE', 180, 55, 'MIN', 100, 90, 2000),
+       (2, 2, 'FEMALE', 150, 16, 'MIN', 55, 40, 1000);
 
 INSERT INTO user_roles(user_id, role)
 VALUES (1, 'USER'),
