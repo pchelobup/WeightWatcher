@@ -17,7 +17,7 @@ public class NotationData {
     public static final Long USER1_ID = UserData.USER1.getId();
     public static final Long USER2_ID = UserData.USER2.getId();
 
-    public static final List<Notation> NOTATIONS = List.of(NOTATION1, NOTATION2);
+    public static final List<Notation> NOTATIONS = List.of(NOTATION2, NOTATION1);
 
     public static Notation getNew() {
         return new Notation(UserData.USER1, LocalDate.of(2022, 3, 23), 50.55);

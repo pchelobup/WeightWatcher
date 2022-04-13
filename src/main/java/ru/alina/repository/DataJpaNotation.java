@@ -16,6 +16,6 @@ public interface DataJpaNotation extends JpaRepository<Notation, Long> {
     @Query("DELETE FROM Notation n WHERE n.id=:id AND n.user.id=:userId")
     void delete(@Param("id") Long id, @Param("userId") Long userId);
 
-    @Query("SELECT n FROM Notation n WHERE n.user.id=:userId")
+    @Query("SELECT n FROM Notation n WHERE n.user.id=:userId order by n.added desc")
     List<Notation> getAll(@Param("userId") Long userId);
 }
