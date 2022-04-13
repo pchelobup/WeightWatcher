@@ -3,11 +3,14 @@ package ru.alina.configs;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import ru.alina.converter.StringToActivityConverter;
+import ru.alina.converter.StringToGenderConverter;
 
 @Configuration
 @ComponentScan(basePackages = "ru.alina.web")
@@ -29,5 +32,11 @@ public class WebConfig implements WebMvcConfigurer {
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         return resolver;
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(new StringToActivityConverter());
+        registry.addConverter(new StringToGenderConverter());
     }
 }
