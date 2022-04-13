@@ -1,8 +1,11 @@
 package ru.alina.service;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import ru.alina.model.Notation;
+
 import static ru.alina.NotationData.*;
 
 class NotationServiceTest extends ServiceTest {
@@ -19,6 +22,13 @@ class NotationServiceTest extends ServiceTest {
         notation.setId(newId);
         match(created, notation);
         match(service.get(newId, USER1_ID), notation);
+    }
+
+    @Test
+    void duplicateDate() {
+        Notation created = service.save(getNew(), USER1_ID);
+        created.setAdded(NOTATION1.getAdded());
+        Assertions.assertThrows(DataIntegrityViolationException.class, () -> service.save(created, USER1_ID));
     }
 
 

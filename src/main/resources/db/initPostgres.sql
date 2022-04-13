@@ -44,6 +44,7 @@ CREATE TABLE notation
     user_id BIGINT           NOT NULL,
     added   DATE             NOT NULL,
     weight  DOUBLE PRECISION NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+    CONSTRAINT user_added_unique UNIQUE (user_id, added)
 )
 
