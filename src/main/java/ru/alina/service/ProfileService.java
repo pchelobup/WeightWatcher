@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.alina.model.Gender;
 import ru.alina.model.Profile;
-import ru.alina.model.User;
 import ru.alina.repository.ProfileRepository;
-import ru.alina.repository.UserRepository;
 
 import java.util.List;
 
@@ -18,24 +16,16 @@ import java.util.List;
 public class ProfileService {
     private final Logger log = LoggerFactory.getLogger(UserService.class);
     private final ProfileRepository repository;
-    private final UserRepository userRepository;
 
-    public ProfileService(ProfileRepository repository, UserRepository userRepository) {
+    public ProfileService(ProfileRepository repository) {
         this.repository = repository;
-        this.userRepository = userRepository;
     }
 
 
     @Transactional
     @Modifying
     public Profile save(Profile profile, Long userId) {
-        if (profile.getId() == null && profile.getUser() == null) {
-            profile.setId(userId);
-            User user = userRepository.get(userId);
-            profile.setUser(user);
-            profile.setCalories(getCalories(profile));
-        }
-
+        profile.setCalories(getCalories(profile));
         log.info("save profile {} with userId {}", profile, userId);
         return repository.save(profile, userId);
     }

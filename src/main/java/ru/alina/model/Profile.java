@@ -1,5 +1,7 @@
 package ru.alina.model;
 
+import org.springframework.util.Assert;
+
 import javax.persistence.*;
 
 @Entity
@@ -61,6 +63,15 @@ public class Profile {
         this.activity = activity;
         this.startWeight = startWeight;
         this.desiredWeight = desiredWeight;
+    }
+
+    public boolean isNew() {
+        return this.id == null;
+    }
+
+    public Long id() {
+        Assert.notNull(id, "Entity must have id");
+        return id;
     }
 
     public Long getId() {

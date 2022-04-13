@@ -13,32 +13,32 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class NotationService {
     private final Logger log = LoggerFactory.getLogger(NotationService.class);
-    private final NotationRepository weightRepository;
+    private final NotationRepository notationRepository;
 
     public NotationService(NotationRepository weightRepository) {
-        this.weightRepository = weightRepository;
+        this.notationRepository = weightRepository;
     }
 
     @Transactional
     public Notation save(Notation notation, Long userId){
         log.info("save {} for user {}", notation, userId);
-        return weightRepository.save(notation, userId);
+        return notationRepository.save(notation, userId);
     }
 
     @Transactional
     public void delete(Long id, Long userId){
         log.info("delete notation {} for user {}", id, userId);
-        weightRepository.delete(id, userId);
+        notationRepository.delete(id, userId);
     }
 
     public Notation get(Long id, Long userId) {
         log.info("get notation {} for user {}", id, userId);
-        return weightRepository.get(id, userId);
+        return notationRepository.get(id, userId);
     }
 
     public List<Notation> getAll(Long userId) {
         log.info("getAll notation for user {}", userId);
-        return weightRepository.getAll(userId);
+        return notationRepository.getAll(userId);
     }
 }
 
