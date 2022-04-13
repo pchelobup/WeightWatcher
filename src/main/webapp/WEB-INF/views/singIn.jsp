@@ -5,15 +5,7 @@
     <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 </head>
 <body>
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">WeightWatcher</a>
-        <div>
-            <a class="nav-link active" href="${pageContext.request.contextPath}/registration">Sing Up</a>
-        </div>
-    </div>
-</nav>
-
+<jsp:include page="section/navigationSingIn.jsp"/>
 <div class="container">
     <div class="row">
         <div class="col-12">

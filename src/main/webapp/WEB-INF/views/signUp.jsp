@@ -1,17 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="section/head.jsp" />
+    <jsp:include page="section/head.jsp"/>
 </head>
 <body>
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">WeightWatcher</a>
-        <div>
-            <a class="nav-link active" href="/login">Sing In</a>
-        </div>
-    </div>
-</nav>
+<jsp:include page="section/navigationSignUp.jsp"/>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -29,7 +22,8 @@
                 </p>
                 <p>
                     <label for="password-confirm">Repeat password</label>
-                    <input type="password" id="password-confirm" name="password-confirm" class="form-control" placeholder="Repeat password"
+                    <input type="password" id="password-confirm" name="password-confirm" class="form-control"
+                           placeholder="Repeat password"
                            required>
                 </p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Ok</button>
