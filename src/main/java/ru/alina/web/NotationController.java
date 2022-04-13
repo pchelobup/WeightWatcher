@@ -3,9 +3,11 @@ package ru.alina.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import ru.alina.model.Notation;
+import ru.alina.model.Profile;
 import ru.alina.security.SecurityUtil;
 import ru.alina.service.NotationService;
 import ru.alina.service.ProfileService;
@@ -43,16 +45,6 @@ public class NotationController {
         return "editNotation";
     }
 
-    @PostMapping("editNotation")
-    public String edit(WebRequest request) {
-        Long userId = userService.getIdByEmail(SecurityUtil.getEmail());
-        Long id = Long.parseLong(Objects.requireNonNull(request.getParameter("id")));
-        Double weight = Double.parseDouble(Objects.requireNonNull(request.getParameter("weight")));
-        LocalDate added = LocalDate.parse(Objects.requireNonNull(request.getParameter("added")));
-        Notation notation = new Notation(id, added, weight);
-        notationService.save(notation, userId);
-        return "redirect:/";
-    }
 
     @GetMapping("deleteNotation")
     public String delete(@RequestParam("id") Long id) {
@@ -67,11 +59,11 @@ public class NotationController {
     }
 
     @PostMapping("/addNotation")
-    public String addSubmit(WebRequest request) {
+    public String addSubmit(@ModelAttribute Notation notation, BindingResult result) {
         Long userId = userService.getIdByEmail(SecurityUtil.getEmail());
-        Double weight = Double.parseDouble(Objects.requireNonNull(request.getParameter("weight")));
-        LocalDate added = LocalDate.parse(Objects.requireNonNull(request.getParameter("added")));
-        Notation notation = new Notation(added, weight);
+        if (result.hasErrors()) {
+            return "redirect:/addNotation";
+        }
         notationService.save(notation, userId);
         return "redirect:/";
     }

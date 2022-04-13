@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ru.alina.converter.StringToActivityConverter;
 import ru.alina.converter.StringToGenderConverter;
+import ru.alina.converter.StringToLocalDateConverter;
 
 @Configuration
 @ComponentScan(basePackages = "ru.alina.web")
@@ -38,5 +39,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(new StringToActivityConverter());
         registry.addConverter(new StringToGenderConverter());
+        registry.addConverter(new StringToLocalDateConverter());
     }
 }

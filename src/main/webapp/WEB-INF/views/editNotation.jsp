@@ -11,7 +11,7 @@
         <div class="col-2"></div>
         <div class="col-8">
             <jsp:useBean id="notation" class="ru.alina.model.Notation" scope="request"/>
-            <form method="post" action="${pageContext.request.contextPath}/editNotation">
+            <form method="post" action="${pageContext.request.contextPath}/addNotation">
                 <input type="hidden" name="id" value="${notation.id}">
                 <div class="form-group">
                     <label for="weight" class="col-form-label">Weight</label>
