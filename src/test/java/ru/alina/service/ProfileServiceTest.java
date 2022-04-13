@@ -1,5 +1,6 @@
 package ru.alina.service;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.alina.UserData;
@@ -40,6 +41,14 @@ class ProfileServiceTest extends ServiceTest {
     }
 
     @Test
+    void updateNotOwn() {
+        Profile updated = getUpdated();
+        updated.setUser(UserData.USER1);
+        Assertions.assertThrows(RuntimeException.class, () -> service.save(updated, UserData.USER2.getId()));
+
+    }
+
+    @Test
     void delete() {
         service.delete(PROFILE_1.getId());
         match(service.get(PROFILE_1.getId()), null);
@@ -56,4 +65,6 @@ class ProfileServiceTest extends ServiceTest {
         List<Profile> actual = service.getAll();
         match(actual, PROFILES);
     }
+
+
 }

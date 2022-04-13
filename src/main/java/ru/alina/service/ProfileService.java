@@ -10,6 +10,7 @@ import ru.alina.model.Profile;
 import ru.alina.repository.ProfileRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional(readOnly = true)
@@ -26,6 +27,9 @@ public class ProfileService {
     @Modifying
     public Profile save(Profile profile, Long userId) {
         profile.setCalories(getCalories(profile));
+        if (!profile.isNew() && !Objects.equals(profile.getId(), userId)) {
+            throw new RuntimeException("profile and user must have same id");
+        }
         log.info("save profile {} with userId {}", profile, userId);
         return repository.save(profile, userId);
     }
