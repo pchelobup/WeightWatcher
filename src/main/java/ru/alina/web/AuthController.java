@@ -10,9 +10,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.context.request.WebRequest;
-import ru.alina.model.Role;
-import ru.alina.model.User;
+import ru.alina.model.*;
 import ru.alina.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
@@ -61,7 +59,7 @@ public class AuthController {
         //TODO оповестить и записать в лог если юзер null
         userService.save(user);
         authWithAuthManager(httpServletRequest, email, password);
-        return "redirect:/";
+        return "profileForm";
     }
 
     public void authWithAuthManager(HttpServletRequest request, String username, String password) {

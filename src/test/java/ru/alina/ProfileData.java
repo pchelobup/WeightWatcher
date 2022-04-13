@@ -13,7 +13,7 @@ public class ProfileData {
     public final static List<Profile> PROFILES = List.of(PROFILE_1, PROFILE_2);
 
     public static Profile getNew() {
-        return new Profile(PROFILE_1.getGender(), PROFILE_1.getHeight(), PROFILE_1.getAge(), Activity.MAX, PROFILE_1.getStartWeight(), PROFILE_1.getDesiredWeight(), 2500);
+        return new Profile(PROFILE_1.getGender(), PROFILE_1.getHeight(), PROFILE_1.getAge(), Activity.MAX, PROFILE_1.getStartWeight(), PROFILE_1.getDesiredWeight(), 3524);
     }
 
     public static Profile getUpdated() {

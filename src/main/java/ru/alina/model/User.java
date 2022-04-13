@@ -1,6 +1,9 @@
 package ru.alina.model;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,6 +14,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@DynamicInsert
 public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     @Email
@@ -28,6 +32,7 @@ public class User extends BaseEntity {
     private Date registered;
 
     @Enumerated(EnumType.STRING)
+    @ColumnDefault(value = "ACTIVE")
     private Status status;
 
     @Enumerated(EnumType.STRING)

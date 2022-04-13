@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-            <a class="btn btn-primary" href="/add" role="button">Add +</a>
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/addNotation" role="button">Add +</a>
 
             <table class="table">
                 <thead>
@@ -28,8 +28,8 @@
                         <jsp:useBean id="notation" class="ru.alina.model.Notation" scope="request"/>
                         <td>${notation.weight}</td>
                         <td>${notation.added}</td>
-                        <td><a href="${pageContext.request.contextPath}/edit?id=${notation.id}">Edit</a></td>
-                        <td><a href="${pageContext.request.contextPath}/delete?id=${notation.id}">Delete</a></td>
+                        <td><a href="${pageContext.request.contextPath}/editNotation?id=${notation.id}">Edit</a></td>
+                        <td><a href="${pageContext.request.contextPath}/deleteNotation?id=${notation.id}">Delete</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.alina.model.Gender;
 import ru.alina.model.Profile;
 import ru.alina.model.User;
 import ru.alina.repository.ProfileRepository;
@@ -32,6 +33,7 @@ public class ProfileService {
             profile.setId(userId);
             User user = userRepository.get(userId);
             profile.setUser(user);
+            profile.setCalories(getCalories(profile));
         }
 
         log.info("save profile {} with userId {}", profile, userId);
@@ -53,6 +55,17 @@ public class ProfileService {
     public List<Profile> getAll() {
         log.info("getAll profile");
         return repository.getAll();
+    }
+
+    private int getCalories(Profile profile) {
+        int result=0;
+        if (profile.getGender().equals(Gender.MALE)) {
+            result = (int) (((10.0*profile.getStartWeight()) + (6.25 * (double)profile.getHeight()) - (5 * profile.getAge()) + 5) * profile.getActivity().getIndexActivity());
+        }
+        else if (profile.getGender().equals(Gender.FEMALE)){
+            result = (int) (((10.0*profile.getStartWeight()) + (6.25 * (double)profile.getHeight()) - (5 * profile.getAge()) - 161) * profile.getActivity().getIndexActivity());
+        }
+        return result;
     }
 
 }

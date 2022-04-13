@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.alina.UserData;
 import ru.alina.model.Profile;
 import ru.alina.model.User;
-
 import java.util.List;
 import static ru.alina.ProfileData.*;
 

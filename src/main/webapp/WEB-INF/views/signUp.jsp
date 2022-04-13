@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">WeightWatcher</a>
         <div>
-            <a class="nav-link active" href="">Sing In</a>
+            <a class="nav-link active" href="/login">Sing In</a>
         </div>
     </div>
 </nav>

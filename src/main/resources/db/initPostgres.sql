@@ -14,7 +14,6 @@ CREATE TABLE users
     password   VARCHAR                               NOT NULL,
     registered TIMESTAMP          DEFAULT now()      NOT NULL,
     status     VARCHAR(10)        DEFAULT ('ACTIVE') NOT NULL
-
 );
 
 CREATE TABLE profile
@@ -27,7 +26,7 @@ CREATE TABLE profile
     activity       VARCHAR(6),
     start_weight   DOUBLE PRECISION,
     desired_weight DOUBLE PRECISION,
-    calories       INTEGER,
+    calories       INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 

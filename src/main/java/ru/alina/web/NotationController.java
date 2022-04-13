@@ -8,6 +8,7 @@ import org.springframework.web.context.request.WebRequest;
 import ru.alina.model.Notation;
 import ru.alina.security.SecurityUtil;
 import ru.alina.service.NotationService;
+import ru.alina.service.ProfileService;
 import ru.alina.service.UserService;
 
 import java.time.LocalDate;
@@ -30,20 +31,19 @@ public class NotationController {
 
     @GetMapping
     public String getNotation(Model model) {
-        System.out.println("getNotation");
         Long userId = userService.getIdByEmail(SecurityUtil.getEmail());
         List<Notation> notations = notationService.getAll(userId);
         model.addAttribute("notations", notations);
         return "home";
     }
 
-    @GetMapping("edit")
+    @GetMapping("editNotation")
     public String getEdit(@RequestParam("id") String id, Model model) {
         model.addAttribute("notation", notationService.get(Long.parseLong(id), userService.getIdByEmail(SecurityUtil.getEmail())));
         return "editNotation";
     }
 
-    @PostMapping("edit")
+    @PostMapping("editNotation")
     public String edit(WebRequest request) {
         Long userId = userService.getIdByEmail(SecurityUtil.getEmail());
         Long id = Long.parseLong(Objects.requireNonNull(request.getParameter("id")));
@@ -54,19 +54,19 @@ public class NotationController {
         return "redirect:/";
     }
 
-    @GetMapping("delete")
+    @GetMapping("deleteNotation")
     public String delete(@RequestParam("id") Long id) {
         Long userId = userService.getIdByEmail(SecurityUtil.getEmail());
         notationService.delete(id, userId);
         return "redirect:/";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/addNotation")
     public String add() {
         return "addNotation";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addNotation")
     public String addSubmit(WebRequest request) {
         Long userId = userService.getIdByEmail(SecurityUtil.getEmail());
         Double weight = Double.parseDouble(Objects.requireNonNull(request.getParameter("weight")));

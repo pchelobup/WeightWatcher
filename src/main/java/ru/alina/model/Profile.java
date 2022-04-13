@@ -54,6 +54,15 @@ public class Profile {
         this.calories = calories;
     }
 
+    public Profile(Gender gender, Integer height, Integer age, Activity activity, Double startWeight, Double desiredWeight) {
+        this.gender = gender;
+        this.height = height;
+        this.age = age;
+        this.activity = activity;
+        this.startWeight = startWeight;
+        this.desiredWeight = desiredWeight;
+    }
+
     public Long getId() {
         return id;
     }

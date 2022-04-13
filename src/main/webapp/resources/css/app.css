@@ -13,3 +13,19 @@
 .last-form-group {
     margin-bottom: 15px;
 }
+
+.profile-qw {
+    margin-bottom: 15px;
+}
+
+.header-inline {
+    display: inline;
+}
+
+.icon {
+    height: 25px;
+    margin-bottom: 10px;
+}
+.icon::after {
+    content: attr(data-title);
+}

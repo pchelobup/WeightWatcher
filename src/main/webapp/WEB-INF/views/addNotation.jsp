@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-            <form method="post" action="${pageContext.request.contextPath}/add">
+            <form method="post" action="${pageContext.request.contextPath}/addNotation">
                 <div class="form-group">
                     <label for="weight" class="col-form-label">Weight</label>
                     <input type="number" step="0.01" min="0" class="form-control" id="weight" name="weight">
