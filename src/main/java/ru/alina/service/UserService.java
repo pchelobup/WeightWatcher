@@ -2,6 +2,7 @@ package ru.alina.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.alina.model.User;
@@ -24,6 +25,9 @@ public class UserService {
     @Transactional
     public User save(User user) {
         log.info("save user {}", user);
+        BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
+        String hashPass = bcryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(hashPass);
         return userRepository.save(user);
     }
 

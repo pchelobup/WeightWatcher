@@ -5,7 +5,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,9 +51,7 @@ public class AuthController {
             return "signUp";
         }
 
-        BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
-        String hashPass = bcryptPasswordEncoder.encode(password);
-        User user = new User(email, hashPass);
+        User user = new User(email, password);
         user.setRoles(Collections.singleton(Role.USER));
         //TODO оповестить и записать в лог если юзер null
         userService.save(user);
