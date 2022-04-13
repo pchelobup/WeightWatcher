@@ -17,6 +17,7 @@ public class UserData {
         return new User("new@Mail.com", "12345", Status.ACTIVE, Role.USER);
     }
 
+
     public static User getUpdated(User user) {
         user.setStatus(Status.DELETED);
         return user;
@@ -24,6 +25,10 @@ public class UserData {
 
     public static void match(User actual, User expected) {
         Matcher.match(actual, expected, "registered");
+    }
+    
+    public static void matchNoPass(User actual, User expected) {
+        Matcher.match(actual, expected, "registered", "password");
     }
 
     public static void match(List<User> actual, List<User> expected) {

@@ -19,8 +19,8 @@ class UserServiceTest extends ServiceTest {
         long newId = created.getId();
         User user = getNew();
         user.setId(newId);
-        match(created, user);
-        match(service.get(newId), user);
+        matchNoPass(created, user);
+        matchNoPass(service.get(newId), user);
     }
 
     @Test

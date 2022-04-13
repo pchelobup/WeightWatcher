@@ -5,17 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 import ru.alina.model.Notation;
-import ru.alina.model.Profile;
 import ru.alina.security.SecurityUtil;
 import ru.alina.service.NotationService;
-import ru.alina.service.ProfileService;
 import ru.alina.service.UserService;
+import ru.alina.to.NotationTo;
+import ru.alina.util.NotationUtil;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/")
@@ -35,7 +32,8 @@ public class NotationController {
     public String getNotation(Model model) {
         Long userId = userService.getIdByEmail(SecurityUtil.getEmail());
         List<Notation> notations = notationService.getAll(userId);
-        model.addAttribute("notations", notations);
+        List<NotationTo> notationTos = NotationUtil.getNotationTos(notations);
+        model.addAttribute("notations", notationTos);
         return "home";
     }
 

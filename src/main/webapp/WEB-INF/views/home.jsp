@@ -24,12 +24,20 @@
 
                 <tbody>
                 <c:forEach items="${notations}" var="notation">
-                    <tr>
-                        <jsp:useBean id="notation" class="ru.alina.model.Notation" scope="request"/>
+                    <tr
+                            <c:choose>
+                                <c:when test="${notation.lower}">class="table-success"</c:when>
+
+                                <c:otherwise>class="table-danger"</c:otherwise>
+                            </c:choose>
+                    >
+
+                        <jsp:useBean id="notation" class="ru.alina.to.NotationTo" scope="request"/>
                         <td>${notation.weight}</td>
-                        <td>${notation.added}</td>
+                        <td>${notation.formattedAdded}</td>
                         <td><a href="${pageContext.request.contextPath}/editNotation?id=${notation.id}">Edit</a></td>
-                        <td><a href="${pageContext.request.contextPath}/deleteNotation?id=${notation.id}">Delete</a></td>
+                        <td><a href="${pageContext.request.contextPath}/deleteNotation?id=${notation.id}">Delete</a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
