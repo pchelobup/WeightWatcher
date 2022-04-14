@@ -14,8 +14,8 @@
     margin-bottom: 15px;
 }
 
-.profile-qw {
-    margin-bottom: 15px;
+.form-qw {
+    margin-bottom: 25px;
 }
 
 .header-inline {
@@ -26,6 +26,14 @@
     height: 25px;
     margin-bottom: 10px;
 }
-.icon::after {
-    content: attr(data-title);
+.back-link {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.form-qw-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }

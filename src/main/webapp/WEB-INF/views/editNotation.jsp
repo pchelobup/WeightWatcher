@@ -14,12 +14,12 @@
             <form method="post" action="${pageContext.request.contextPath}/addNotation">
                 <input type="hidden" name="id" value="${notation.id}">
                 <div class="form-group">
-                    <label for="weight" class="col-form-label">Weight</label>
+                    <label for="weight" class="col-form-label form-qw-header">Weight</label>
                     <input type="number" step="0.01" min="0" class="form-control" id="weight" name="weight"
                            value="${notation.weight}">
                 </div>
                 <div class="form-group last-form-group">
-                    <label for="added" class="col-form-label">Weight</label>
+                    <label for="added" class="col-form-label form-qw-header">Date</label>
                     <input type="date" class="form-control" id="added" name="added" autocomplete="off"
                            value="${notation.added}">
                 </div>

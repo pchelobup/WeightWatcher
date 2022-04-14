@@ -121,10 +121,12 @@ public class User extends BaseEntity {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
-                "email='" + email + '\'' +
+                "id=" + id +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", registered=" + registered +
+                ", status=" + status +
+                ", roles=" + roles +
                 '}';
     }
 }

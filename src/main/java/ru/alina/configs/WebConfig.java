@@ -9,9 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import ru.alina.converter.StringToActivityConverter;
-import ru.alina.converter.StringToGenderConverter;
-import ru.alina.converter.StringToLocalDateConverter;
+import ru.alina.converter.*;
 
 @Configuration
 @ComponentScan(basePackages = "ru.alina.web")
@@ -40,5 +38,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addConverter(new StringToActivityConverter());
         registry.addConverter(new StringToGenderConverter());
         registry.addConverter(new StringToLocalDateConverter());
+        registry.addConverter(new StringToStatusConverter());
+        registry.addConverter(new StringToRoleConverter());
     }
 }

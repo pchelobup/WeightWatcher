@@ -6,8 +6,8 @@ import java.util.List;
 
 
 public class UserData {
-    public static final User USER1 = new User(1L, "mail@Mail.com", "$2a$12$FzYWgZ.ukSJS9KAtZZvHkOVw5iOGKibZlenQ1AxytGbnBAmGPaP9y", Status.ACTIVE, Role.USER);
-    public static final User USER2 = new User(2L, "pochta@Mail.com", "$2a$12$h5yDKri/.IjvfHrziaQ.QejnQmhSKmEXg4zHq6CVGM5IWkr.GiqPG", Status.ACTIVE, Role.USER);
+    public static final User USER1 = new User(1L, "mail@Mail.com", "$2a$12$FzYWgZ.ukSJS9KAtZZvHkOVw5iOGKibZlenQ1AxytGbnBAmGPaP9y", Status.ACTIVE, Role.USER, Role.ADMIN);
+    public static final User USER2 = new User(2L, "pochta@Mail.com", "$2a$12$Hj2g8faouoYrKl7zOaNzf.Uo3rUhQG3vNohgq7EgxqMzLGJ6wdiY.", Status.ACTIVE, Role.USER);
     public static final User USER_SAME_EMAIL = new User("mail@Mail.com", "123445", Status.ACTIVE, Role.USER);
     public static final User USER_UNSUITABLE_PASSWORD = new User("mail@Mail.com", "123", Status.ACTIVE, Role.USER);
     public static final Long NOT_FOUND_ID = 555L;
