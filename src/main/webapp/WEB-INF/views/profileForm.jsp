@@ -34,12 +34,12 @@
 
                     <div class="profile-qw">
                         <label for="height" class="col-form-label">Height</label>
-                        <input type="number" min="100" max="250" step="1" class="form-control" id="height" name="height">
+                        <input type="number" min="100" max="250" step="1" class="form-control" id="height" name="height" required>
                     </div>
 
                     <div class="profile-qw">
                         <label for="age" class="col-form-label">Age</label>
-                        <input type="number" min="16" max="120" step="1" class="form-control" id="age" name="age">
+                        <input type="number" min="16" max="120" step="1" class="form-control" id="age" name="age" required>
                     </div>
 
                     <div class="profile-qw">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="activity" id="max" value="max">
-                            <label class="form-check-label" for="male">
+                            <label class="form-check-label" for="max">
                                 Extremely high(The job is physically demanding and you train 2 times a day)
                             </label>
                         </div>
@@ -78,12 +78,12 @@
 
                     <div class="profile-qw">
                         <label for="start-weight" class="col-form-label">Current weight</label>
-                        <input type="number" step="0.01" min="0" class="form-control" id="start-weight" name="startWeight">
+                        <input type="number" step="0.01" min="0" class="form-control" id="start-weight" name="startWeight" required>
                     </div>
 
                     <div class="profile-qw">
                         <label for="desired-weight" class="col-form-label">Desired Weight</label>
-                        <input type="number" step="0.01" min="0" class="form-control" id="desired-weight" name="desiredWeight">
+                        <input type="number" step="0.01" min="0" class="form-control" id="desired-weight" name="desiredWeight" required>
                     </div>
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Ok</button>
