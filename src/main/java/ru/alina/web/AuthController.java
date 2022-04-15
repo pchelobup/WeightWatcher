@@ -45,15 +45,12 @@ public class AuthController {
         String email = httpServletRequest.getParameter("email");
         String password = httpServletRequest.getParameter("password");
         String passwordConfirm = httpServletRequest.getParameter("password-confirm");
-        //TODO test on null
         if (!password.equals(passwordConfirm) || userService.isLoginExist(email)) {
-            //TODO оповестить пользователя
             return "signUp";
         }
 
         User user = new User(email, password);
         user.setRoles(Collections.singleton(Role.USER));
-        //TODO оповестить и записать в лог если юзер null
         userService.save(user);
         authWithAuthManager(httpServletRequest, email, password);
         return "profileForm";
