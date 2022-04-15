@@ -24,7 +24,6 @@ public class User extends BaseEntity {
 
     @Column(nullable = false)
     @NotBlank
-    @Size(min = 5, max = 100)
     private String password;
 
     @CreationTimestamp

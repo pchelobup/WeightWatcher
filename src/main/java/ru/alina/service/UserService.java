@@ -25,9 +25,11 @@ public class UserService {
     @Transactional
     public User save(User user) {
         log.info("save user {}", user);
-        BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
-        String hashPass = bcryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(hashPass);
+        if (user.isNew()) {
+            BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
+            String hashPass = bcryptPasswordEncoder.encode(user.getPassword());
+            user.setPassword(hashPass);
+        }
         return userRepository.save(user);
     }
 

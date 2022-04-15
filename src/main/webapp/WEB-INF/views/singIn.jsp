@@ -18,7 +18,7 @@
                 </p>
                 <p>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                    <input type="password" minlength="5" id="password" name="password" class="form-control" placeholder="Password"
                            required>
                 </p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Ok</button>

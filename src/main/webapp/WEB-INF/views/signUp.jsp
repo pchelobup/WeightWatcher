@@ -17,12 +17,12 @@
                 </p>
                 <p>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                    <input type="password" minlength="5" id="password" name="password" class="form-control" placeholder="Password"
                            required>
                 </p>
                 <p>
                     <label for="password-confirm">Repeat password</label>
-                    <input type="password" id="password-confirm" name="password-confirm" class="form-control"
+                    <input type="password" minlength="5" id="password-confirm" name="password-confirm" class="form-control"
                            placeholder="Repeat password"
                            required>
                 </p>
