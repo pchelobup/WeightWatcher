@@ -13,7 +13,7 @@ public interface NotationUtil {
         for (int i = 0; i < notations.size(); i++) {
             double n1 = notations.get(i).getWeight();
 
-            if (i < notations.size() - 2) {
+            if (i < notations.size() - 1) {
                 double n2 = notations.get(i + 1).getWeight();
 
                 if (n1 > n2) {
